@@ -1,7 +1,8 @@
-server ip: test.aternos.me // the server ip here (e.g, hypixel.net)
-version: 1.18.1 // version (e.g, 1.16
-port: 25565 // server port, if not then put 0
+server ip: localhost // the server ip here (e.g, hypixel.net)
+version: 1.16.5 // version (e.g, 1.8.9, 1.16.5)
+port: 6201 // server port, if not then put 0
 username: NBot // the bot name
 bot owner: Nexity // your name here
 bot password: bot123a // for when the server has authme or premium accounts
-premium: 1 // if the bot is for cracked servers, put 0, else put 1
+premium: 0 // if the bot is for cracked servers, put 0, else put 1
+amount of bots: 5 // how many bots you want to start (max 99)
