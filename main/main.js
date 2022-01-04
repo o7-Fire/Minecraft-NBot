@@ -144,6 +144,11 @@ function trymine(idoftheblock) {
     }
 }
 
+function afk() {
+    bot.jump()
+  }
+setTimeout(afk, 120000); // jump once its been 2 minutes
+
 bot.once('spawn', () => {
     var botport = Number.parseInt(args[0].replace(botprefix, ""))
 
