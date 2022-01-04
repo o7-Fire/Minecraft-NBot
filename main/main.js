@@ -16,7 +16,7 @@ const pvp = require('mineflayer-pvp').plugin
 
 var sleep = require('sleep');
 const vec3 = require('vec3')
-var args = process.argv.slice(8);
+var args = process.argv.slice(2);
 
 function getRandomInt(min, max) {
   min = Math.ceil(min);
@@ -62,27 +62,27 @@ function isEmpty(obj) {
 	return Object.keys(obj).length === 0;
 }
 
-if (Number.parseInt(args[7]) === 1) {
-    const bot = mineflayer.createBot({
-      host: args[1],
-      username: args[4],
-      version: args[2],
-      port: args[3],
-      password: args[6]
+let bot
+if (Number.parseInt(args[6]) === 1) {
+    bot = mineflayer.createBot({
+      host: args[0],
+      username: args[3],
+      version: args[1],
+      port: Number.parseInt(args[2]),
+      password: args[5]
     })
 } else {
-    const bot = mineflayer.createBot({
-      host: args[1],
-      username: args[4],
-      version: args[2],
-      port: args[3]
+    bot = mineflayer.createBot({
+      host: args[0],
+      username: args[3],
+      version: args[1],
+      port: Number.parseInt(args[2])
     })
 }
 
-var botprefix = args[4] // change this to something else if you want to change the name in main.py
-var botowner = args[5] // to prevent people hijacking your bot
-var botpassword = args[6] // for servers with authme / authentication
-const mcData = require('minecraft-data')(bot.version)
+var botprefix = args[7]
+var botowner = args[4]
+var botpassword = args[5]
 var pi = 3.14159;
 var isRoamingEnabled = false
 var isAutototemEnabled = false
@@ -94,13 +94,16 @@ var uselessvar = 0
 var uselessvar2 = 0
 var uselessvar3 = 0
 var a1 = false
+const mcData = require('minecraft-data')(args[1])
 
 let itemsByName
-if (bot.supportFeature('itemsAreNotBlocks')) {
-	itemsByName = 'itemsByName'
-} else if (bot.supportFeature('itemsAreAlsoBlocks')) {
-	itemsByName = 'blocksByName'
-}
+bot.once("login", () => {
+    if (bot.supportFeature('itemsAreNotBlocks')) {
+        itemsByName = 'itemsByName'
+    } else if (bot.supportFeature('itemsAreAlsoBlocks')) {
+        itemsByName = 'blocksByName'
+    }
+});
 
 navigatePlugin(bot);
 bot.loadPlugins([armorManager, pathfinder, autoeat, pvp, blockFinderPlugin]);
@@ -145,7 +148,7 @@ function trymine(idoftheblock) {
 }
 
 bot.once('spawn', () => {
-    var botport = Number.parseInt(args[0].replace(botprefix, ""))
+    var botport = Number.parseInt(args[3].replace(botprefix, ""))
 
     //inventory viewer
     inventoryViewer(bot, {port: 5200 + botport})
