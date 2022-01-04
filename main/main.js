@@ -13,10 +13,22 @@ var blockFinderPlugin = require('mineflayer-blockfinder')(mineflayer);
 const inventoryViewer = require('mineflayer-web-inventory')
 //const {autoCrystal} = require('mineflayer-autocrystal')
 const pvp = require('mineflayer-pvp').plugin
+const {
+    Client,
+    Intents
+  } = require('discord.js')
+  // Create Discord intentions, required in v13
+  const intents = new Intents(['GUILDS', 'GUILD_MESSAGES'])
+  // Create Discord client
+  const client = new Client({
+    intents: intents
+  })
 
 var sleep = require('sleep');
 const vec3 = require('vec3')
 var args = process.argv.slice(2);
+
+let channel = process.argv[3]
 
 function getRandomInt(min, max) {
   min = Math.ceil(min);
@@ -817,6 +829,17 @@ bot.on('chat', (username, message) => {
 	}
 
 })
+
+if (message === "mctodiscord") {
+bot.on('chat', (username, message) => {
+    if (username === bot.username) return
+    const embed = new MessageEmbed()
+    .setTitle(`${username}`)
+    .setDescription(`${message}`)
+    .setColor(0x00AE86)
+    channel.send(embed)
+  })
+}
 
 /*
 bot.on('end', function () {
