@@ -29,6 +29,12 @@ You can also control the bot on https://localhost:5001 - https://localhost:5099 
 command (args1) = required arguments\
 command {args1} = not required but allowed\
 \
+bot show villagers\
+    shows nearby villagers\
+\
+bot show inventory\
+    shows nearby villagers' trading inventory\
+    
 say (message)\
     makes the bot chat the message\
 \
@@ -48,6 +54,9 @@ bot roam\
     turns roaming on and off\
     walk randomly\
 \
+bot autototem\
+    enables autototem, automatically equips totem\
+\
 bot autofish\
     turns autofishing on and off\
     makes the bot look at water and start auto fishing\
@@ -56,6 +65,9 @@ bot attack (targetname)\
     attacks a player using the item currently held by the bot\
     for better effect, equip a weapon first\
 \
+line up\
+    makes the bots line up shoulder to shoulder\
+\
 equipblock (itemname)\
     equips an item onto the bot's hand\
 \
@@ -63,5 +75,8 @@ throwblock (itemname)\
     drops an item from the bot's inventory\
 \
 tellinventory\
-    tells what item is inside the bot's inventory
+    tells what item is inside the bot's inventory\
+\
+bot mine (blockname)\
+    mines the nearest block with that name\ 
 
