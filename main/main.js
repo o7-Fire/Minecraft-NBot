@@ -828,6 +828,11 @@ bot.on('chat', (username, message) => {
 
 })
 
+if (message === "chopwood") {
+    var theid = mcData[itemsByName]["oak_log"]["spruce_log"]["acacia_log"].id // did i forget anything? feel free to modify this
+    trymine(theid)
+}
+
 /*
 bot.on('end', function () {
 	console.log("Disconnected. Waiting 5 seconds")
