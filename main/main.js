@@ -16,7 +16,7 @@ const pvp = require('mineflayer-pvp').plugin
 
 var sleep = require('sleep');
 const vec3 = require('vec3')
-var args = process.argv.slice(2);
+var args = process.argv.slice(8);
 
 function getRandomInt(min, max) {
   min = Math.ceil(min);
@@ -62,12 +62,22 @@ function isEmpty(obj) {
 	return Object.keys(obj).length === 0;
 }
 
-const bot = mineflayer.createBot({
-  host: (args[1]),
-  username: (args[4]),
-  version: (args[2]),
-  port: (args[3])
-})
+if (Number.parseInt(args[7]) === 1) {
+    const bot = mineflayer.createBot({
+      host: args[1],
+      username: args[4],
+      version: args[2],
+      port: args[3],
+      password: args[6]
+    })
+} else {
+    const bot = mineflayer.createBot({
+      host: args[1],
+      username: args[4],
+      version: args[2],
+      port: args[3]
+    })
+}
 
 var botprefix = args[4] // change this to something else if you want to change the name in main.py
 var botowner = args[5] // to prevent people hijacking your bot
