@@ -3,13 +3,7 @@ Minecraft bot(s) program written in Javascript using Mineflayer.
 
 # TODO 
 
-Lumberjack command
-\
-Mineflayer/Discord.js communication
-\
 Disable what the bot is doing before executing the command to prevent it from crashing.
-\
-Make the bot walk every 10 minutes to prevent it from getting disconnected and back to its original position.
 
 # 
 \
