@@ -63,15 +63,15 @@ function isEmpty(obj) {
 }
 
 const bot = mineflayer.createBot({
-  host: 'testing2b.aternos.me',
-  username: (args[0]),
-  version: '1.16.5',
-  port: 49884
+  host: (args[1]),
+  username: (args[4]),
+  version: (args[2]),
+  port: (args[3])
 })
 
-var botprefix = "NBot" // change this to something else if you want to change the name in main.py
-var botowner = "Nexity" // to prevent people hijacking your bot
-var botpassword = "shitfuck" // for servers with authme / authentication
+var botprefix = args[4] // change this to something else if you want to change the name in main.py
+var botowner = args[5] // to prevent people hijacking your bot
+var botpassword = args[6] // for servers with authme / authentication
 const mcData = require('minecraft-data')(bot.version)
 var pi = 3.14159;
 var isRoamingEnabled = false
@@ -817,7 +817,7 @@ bot.on('chat', (username, message) => {
 	}
 
 })
-	
+
 /*
 bot.on('end', function () {
 	console.log("Disconnected. Waiting 5 seconds")
